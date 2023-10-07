@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const port = 8000;
+const env = require("./config/environment");
 const expressLayouts = require("express-ejs-layouts");
 const db = require("./config/mongoose");
 // used for session cookie
@@ -45,7 +46,7 @@ app.use(
   session({
     name: "codeial",
     // TODO change the secret before deployment in production mode
-    secret: "blahsomething",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {

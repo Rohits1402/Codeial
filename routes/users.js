@@ -17,6 +17,7 @@ router.post(
 router.get("/sign-in", usersController.signIn);
 router.get("/sign-up", usersController.signUp);
 
+router.get("/sign-out", usersController.destroySession);
 router.post("/create", usersController.create);
 
 //using passport as a middle for authentication and authorization
@@ -28,8 +29,6 @@ router.post(
   }),
   usersController.createSession
 );
-
-router.get("/sign-out", usersController.destroySession);
 
 router.get(
   "/auth/google",

@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-
+const env = require("../config/environment");
 //Not Stored Locally
-mongoose.connect(
-  "mongodb+srv://rschauhan1402:rohit2001@cluster0.l6lgral.mongodb.net/"
-);
+mongoose.connect(`${env.db}`);
 
 const db = mongoose.connection;
 
