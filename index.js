@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const port = 8000;
 const env = require("./config/environment");
+const logger = require("morgan");
 const expressLayouts = require("express-ejs-layouts");
 const db = require("./config/mongoose");
 // used for session cookie
@@ -30,6 +31,8 @@ app.use(express.static("./assets"));
 
 //makes the upload path available to the browser
 app.use("/uploads", express.static(__dirname + "/uploads"));
+
+app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(expressLayouts);
 
